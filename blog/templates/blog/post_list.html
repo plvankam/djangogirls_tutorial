@@ -1,12 +1,10 @@
-<!doctype html>
-<html>
-<head>
-<title>Philip's blog
-</title>
-</head>
-<body>
-	<h3>Hi there</h3>
-	<br>
-	<h3>It works</h3>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+{% for post in posts %}
+  <div class="post">
+      <h1><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a></h1>
+      <p>published: {{ post.published_date }}</p>
+      <p>{{ post.text | linebreaksbr }}</p>
+  </div>
+{% endfor %}
+{% endblock %}
